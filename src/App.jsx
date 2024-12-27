@@ -16,64 +16,66 @@ function App() {
     if (!newState.trim()) {
       SetError("State name is required and it can not be empty");
       return;
-    }
+    } //✅
 
     if (states.some((state) => state === newState)) {
       SetError("State already exists");
       return;
-    }
+    } //✅
 
     setStates([...states, newState]);
     setNewState("");
-    SetError("");
-  };
+    SetError(""); //✅
+  };//✅
 
   const addCity = () => {
     if (!newCity.trim()) {
       SetError("City name is required and it can not be empty");
       return;
-    }
+    }//✅
 
     if (!selectedState) {
       SetError("Please select a state for the city");
       return;
-    }
+    }//✅
 
     if (cities.some((city) => city.name === newCity)) {
       SetError("City already exists");
       return;
-    }
+    }//✅
 
     setCities([...cities, { name: newCity, state: selectedState }]);
     setNewCity("");
     setSlectedState("");
-    SetError("");
-  };
+    SetError("");//✅
+  };//✅
 
   const deleteCity = (index) => {
-    const updatedCities = cities.filter((_, i) => i !== index);
-    setCities(updatedCities);
-  };
+    const updatedCities = cities.filter((_, i) => i !== index);//✅
+    setCities(updatedCities);//✅
+  };//✅
 
   const editCity = (cityIndex, cityName, newState) => {
     const updatedCities = [...cities];
     updatedCities[cityIndex] = { name: cityName, state: newState };
-    setCities(updatedCities);
-  };
+    setCities(updatedCities);//✅
+  };//✅
 
   const nextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
-  };
+  };//✅
 
   const previousPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
-  };
+  };//✅
 
-  const indexofLastCity = currentPage * citiesPerPage;
+
+
+  const indexofLastCity = currentPage * citiesPerPage; 
   const indexofFirstCity = indexofLastCity - citiesPerPage;
   const currentCities = cities.slice(indexofFirstCity, indexofLastCity);
   const totalPages = Math.ceil(cities.length / citiesPerPage);
@@ -82,6 +84,8 @@ function App() {
     <>
       <div>
         <h1>Manage your city</h1>
+
+        {/* Add State  -> newState is used */}
         <div>
           <h2>Add State</h2>
           <input
@@ -93,6 +97,7 @@ function App() {
           <button onClick={addState}>Add State</button>
         </div>
 
+        {/* Add City  -> newCity & selectedState is used */}
         <div>
           <h2>Add City</h2>
           <input
@@ -101,7 +106,6 @@ function App() {
             value={newCity}
             onChange={(e) => setNewCity(e.target.value)}
           />
-
           <select
             value={selectedState}
             onChange={(e) => setSlectedState(e.target.value)}
@@ -120,6 +124,8 @@ function App() {
       {error && <p>{error}</p>}
 
       <h2>City List</h2>
+
+      {/* City Table  -> cities is used */}
       <table border="1">
         <thead>
           <tr>
@@ -137,7 +143,8 @@ function App() {
                   value={city.name}
                   onChange={(e) => {
                     const updatedCities = [...cities];
-                    updatedCities[indexofFirstCity + index].name = e.target.value;
+                    updatedCities[indexofFirstCity + index].name =
+                      e.target.value;
                     setCities(updatedCities);
                   }}
                 />
@@ -146,7 +153,11 @@ function App() {
                 <select
                   value={city.state}
                   onChange={(e) =>
-                    editCity(indexofFirstCity + index, city.name, e.target.value)
+                    editCity(
+                      indexofFirstCity + index,
+                      city.name,
+                      e.target.value
+                    )
                   }
                 >
                   {states.map((state, i) => (
@@ -166,6 +177,7 @@ function App() {
         </tbody>
       </table>
 
+      {/* Pagination  -> currentPage & totalPages is used*/}
       <div>
         <button onClick={previousPage} disabled={currentPage === 1}>
           Previous

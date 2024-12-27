@@ -1,42 +1,136 @@
-#root {
-  max-width: 1280px;
+/* App.css */
+
+/* General Styles */
+
+body {
   margin: 0 auto;
-  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input {
+  background-color: white;
+}
+
+option {
+  background-color: white;
+}
+
+select {
+  background-color: white;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+  padding: 20px;
+}
+
+h1,
+h2 {
+  color: #444;
+}
+
+h2 {
+  margin-top: 30px;
+}
+
+/* Form and Input Styles */
+input[type="text"],
+select {
+  width: 250px;
+  padding: 10px;
+  margin-right: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #333;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Error Message Styles */
+p {
+  color: red;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+table th {
+  background-color: #007bff;
+  color: white;
+}
+
+table td input[type="text"],
+table td select {
+  width: 100%;
+}
+
+table button {
+  background-color: red;
+  font-size: 12px;
+}
+
+table button:hover {
+  background-color: darkred;
+}
+
+/* Pagination Styles */
+div {
+  margin-top: 20px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+button {
+  margin: 0 5px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+span {
+  font-size: 16px;
+  font-weight: bold;
 }
